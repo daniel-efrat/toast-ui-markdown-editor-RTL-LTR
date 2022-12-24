@@ -1,5 +1,7 @@
 # markdown-editor
 
+link to live website: [md-ltr.netlify.app](md-ltr.netlify.app)
+
 ## Project setup
 ```
 npm install
