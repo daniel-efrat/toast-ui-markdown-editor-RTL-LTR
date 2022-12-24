@@ -1,9 +1,9 @@
 <template>
  <div class="wrapper">
-  <h1>RTL / LTR Markdown Editor</h1>
+  <h1 class="title">RTL / LTR Markdown Editor</h1>
  <div class="free">
    <div class="line"></div>
-   <h2> 100% Free </h2>
+   <h2 class="subtitle"> 100% Free </h2>
    <div class="line"></div>
  </div>
   <div class="btns">
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import PayPalDonationButton from './components/PayPalDonationButton.vue';
+
 import Editor from "@toast-ui/editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
@@ -29,6 +31,9 @@ export default {
       language: 'he',
   useCommandShortcut: true,
     }
+  },
+   components: {
+    PayPalDonationButton,
   },
   mounted() {
     this.editor = new Editor({
@@ -63,14 +68,15 @@ html, body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
-h1{
+.title{
   text-transform: uppercase;
   font-weight: 900;
-  font-size: 5rem;
-  margin-bottom: -2.5rem;
-  margin-top: -8.5rem;
-  background: -webkit-linear-gradient(rgb(208, 189, 231), rgb(121, 70, 187));
+  font-size: 3rem;
+  background: -webkit-linear-gradient(rgb(208, 189, 231), #c3841e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -79,10 +85,12 @@ h1{
   width: 100%;
   justify-content: center;
   align-items: center;
+  margin-top: -2rem;
+
 }
 
-h2{
-  color: rgb(255, 255, 255);
+.subtitle{
+  color: rgb(205, 205, 205);
   text-transform: uppercase;
   width: max-content;
   padding: .5rem 2rem;
@@ -112,11 +120,11 @@ h2{
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgb(73, 73, 73);
   background-image: url(./assets/dots.png);
-  background-size: 2.5%;
+  background-size:4%;
 }
 
 .btns{
@@ -133,7 +141,7 @@ h2{
    cursor: pointer;
    transition: all 500ms ease;
    background: rgb(207, 207, 207);
-   color: rgb(119, 119, 119);
+   color: rgba(119, 119, 119, 0.701);
    font-weight: 800;
    letter-spacing: 2px;
    font-size: 1.2rem;
@@ -148,7 +156,7 @@ h2{
    inset -4px -4px 10px rgba(255, 255, 255, 0.305);
 }
 .on {
-  background: rgb(106, 90, 186);
+  background: #c3841e;
   color: rgb(225, 224, 224);
    border: 1px white solid;
 
@@ -156,6 +164,43 @@ h2{
 }
 .editor {
   direction:rtl;
-  /*height: 70vh!important;*/
+  min-height: 60vh;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
+  min-width: 70vw;
+  max-width:100vw;
+  padding: 0;
+}
+
+@media(max-width:500px) {
+.title{
+  font-size: 1.2rem;
+
+}
+.subtitle{
+  font-size:.8rem
+
+}
+.editor {
+  width: 100vw;
+  margin-top: -1rem;
+  padding-bottom: 60px;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: .5rem 1rem;
+}
+
+.wrapper {
+  background-size:15%;
+}
+}
+@media(max-width:1270px){
+  .title {
+    font-size: 2.2rem;
+  }
+  .wrapper {
+  background-size:10%;
+}
 }
 </style>
