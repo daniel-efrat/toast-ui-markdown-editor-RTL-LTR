@@ -10,7 +10,7 @@
     <button class="btn ltr" ref="ltr" @click="onClickLTR($event)">LTR</button>
      <button class="btn rtl on" ref="rtl" @click="onClickRTL($event)">RTL</button>
   </div>
-   <div ref="editor" class="editor" id="editor"></div>
+   <div ref="editor" class="editor rtl" id="editor"></div>
 
   
  </div>
@@ -46,12 +46,12 @@ export default {
   },
   methods: {
     onClickLTR(event) {
-      this.$refs.editor.classList.remove('editor')
+      this.$refs.editor.classList.remove('rtl')
       this.$refs.rtl.classList.remove('on')
       this.$refs.ltr.classList.add('on')
     },
     onClickRTL(event) {
-      this.$refs.editor.classList.add('editor')
+      this.$refs.editor.classList.add('rtl')
       this.$refs.ltr.classList.remove('on')
       this.$refs.rtl.classList.add('on')
     },
@@ -79,6 +79,7 @@ html, body{
   background: -webkit-linear-gradient(rgb(208, 189, 231), #c3841e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align:center
 }
 .free {
   display: flex;
@@ -90,7 +91,7 @@ html, body{
 }
 
 .subtitle{
-  color: rgb(205, 205, 205);
+  color: rgb(255, 255, 255);
   text-transform: uppercase;
   width: max-content;
   padding: .5rem 2rem;
@@ -163,12 +164,16 @@ html, body{
   
 }
 .editor {
-  direction:rtl;
+  
   min-height: 60vh;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
   min-width: 70vw;
-  max-width:100vw;
+  max-width:98vw;
   padding: 0;
+}
+.rtl{
+  direction: rtl;
+
 }
 
 @media(max-width:500px) {
